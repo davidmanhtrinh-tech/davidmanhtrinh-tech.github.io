@@ -1,0 +1,171 @@
+.eyebrow {
+  width: 100vw; /* This ensures the full viewport is properly aligned */
+  position: relative;
+  left: 50%;
+  transform: translateX(-49%); /* keeps the text perfectly central*/
+
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: white;
+}
+header img {
+  margin-top: 90px;
+}
+.group-title {
+  text-align: center;
+}
+
+.group-title::before {
+  left: 50%;
+  transform: translateX(-50%);
+} /*
+ Base page - this will be the page where all the Q/A's will be answered and prompted. I wanted a minimal design that was highly legible and easy on the eyes to read and observe.*/
+body {
+  background-color: rgb(255, 247, 222);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #3131d6;
+}
+
+/* Header - This is a pretty standard header, the page takes on a centred uniformed layout where everything has been centred to provide symmetry for an easy and seamless reading experience.*/
+header {
+  background-color: rgb(3, 24, 143);
+  padding: 50px 20px;
+  text-align: center;
+}
+/* I wanted the title to not be too flashy, I made sure that I used the same RGB code to give it a complimentary palette for both the base page and question page */
+h1 {
+  color: rgb(255, 247, 222);
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+/* I made sure the text was colour sourced across all */
+.intro {
+  color: rgb(255, 247, 222);
+  max-width: 700px;
+  margin: 20px auto 0;
+  line-height: 1.8;
+}
+
+.intro em {
+  font-style: normal;
+}
+
+.eyebrow {
+  color: white;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* A deep royal blue colour was employed to match the hero page, providing it that complimentary visual pattern.*/
+.group-title {
+  position: relative;
+  margin-top: 80px;
+  margin-bottom: 30px;
+  padding-top: 25px;
+  color: rgb(35, 9, 183);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* I've added a very faint blue-ish purple line above each section title to give it a touch of elegance  */
+.group-title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background-color: rgb(188, 185, 220);
+  border-radius: 2px;
+}
+
+/* I spaced out my question blocks, the initial iteration was set too tightly compressed together so I settled for 30px */
+.question-block {
+  margin-bottom: 30px;
+}
+
+/* Extra spacing after question 4 and 8 was added - this provides breathing space for the user/reader to internalise the information before moving onto the bit of info (similar to book chapters) */
+.spaced {
+  margin-bottom: 100px;
+}
+
+/* Question Headings*/
+.question-block h3 {
+  position: relative;
+  margin-top: 50px;
+  padding-top: 20px;
+  color: #1900a5;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  line-height: 1.5;
+}
+
+/* Thin dividers are placed above each question to reduce cognitive load and amplify sequentiality and orgnisation of information */
+.question-block h3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(71, 2, 234, 0.15);
+}
+
+/* These are the standardised settings for my paragraphs */
+p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  max-width: 1000px;
+}
+
+/* Main answer text */
+.question-block p {
+  color: #000000;
+}
+
+/* Layout*/
+main {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.container {
+  margin-bottom: 50px;
+}
+
+/* I had to really play around with the thumbnail image positioning as it had positioned itself close to the H1 title and didn't look flattering. */
+img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: block;
+  margin: 30px auto;
+}
+
+/* The footer is centred to clearly separate authorship information 
+   from the main content while maintaining visual balance across the page.*/
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 80px;
+
+  max-width: 900px; /*I match your main */
+  margin-left: auto; /* This section centers the block (as both learnt in class) */
+  margin-right: auto;
+}
+/* Ensures each line is centered cleanly */
+footer p {
+  margin: 5px 0;
+}
