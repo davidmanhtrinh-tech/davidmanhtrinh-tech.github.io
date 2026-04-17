@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #01092f;
+  font-family: Arial, sans-serif;
+}
+
+.centered {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.card {
+  position: relative;
+  width: 280px;
+  height: 380px;
+  border-radius: 18px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.card:hover {
+  transform: rotateX(12deg) rotateY(-12deg);
+}
+
+.shadow,
+.image,
+.content {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+}
+
+.shadow {
+  background-image: var(--url);
+  background-size: cover;
+  background-position: center;
+  transform: translateZ(-60px) scale(0.95);
+  filter: blur(24px);
+  opacity: 0.45;
+}
+
+.image.background {
+  background-image: var(--url);
+  background-size: cover;
+  background-position: center;
+  transform: translateZ(0);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.image.cutout {
+  background-image: var(--url);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateZ(50px);
+  pointer-events: none;
+}
+
+.content {
+  inset: auto 20px 20px 20px;
+  color: white;
+  transform: translateZ(70px);
+  z-index: 3;
+}
+
+.content h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.content p {
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.border-left-behind::before,
+.border-right-behind::before,
+.border-bottom-behind::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  z-index: -1;
+}
+
+.border-left-behind::before {
+  top: 10px;
+  left: -10px;
+  width: 18px;
+  height: 95%;
+  transform: translateZ(-20px);
+}
+
+.border-right-behind::before {
+  top: 10px;
+  right: -10px;
+  width: 18px;
+  height: 95%;
+  transform: translateZ(-20px);
+}
+
+.border-bottom-behind::after {
+  left: 10px;
+  bottom: -10px;
+  width: 95%;
+  height: 18px;
+  transform: translateZ(-20px);
+}
+
+/*  BACK GLOW (FIXED)  */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -30px;
+  border-radius: 25px;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 255, 0.3),
+    transparent 70%
+  );
+  filter: blur(30px);
+  opacity: 0.7;
+  transform: translateZ(-50px);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+.card:hover::after {
+  opacity: 1;
+  filter: blur(70px);
+  transform: translateZ(-70px) scale(1.15);
+}
+
+/* OPTIONAL: per-card color */
+.card:nth-child(1)::after {
+  background: radial-gradient(
+    circle at center,
+    rgba(246, 255, 0, 0.4),
+    transparent 200%
+  );
+}
+
+.card:nth-child(1)::after {
+  background: radial-gradient(
+    circle at center,
+    rgba(187, 255, 0, 0.4),
+    transparent 200%
+  );
+}
