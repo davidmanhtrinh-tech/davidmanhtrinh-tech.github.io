@@ -137,7 +137,7 @@ body {
 }
 
 .card:hover::after {
-  opacity: 1;
+  opacity: 2;
   filter: blur(70px);
   transform: translateZ(-70px) scale(1.15);
 }
@@ -146,7 +146,7 @@ body {
 .card:nth-child(1)::after {
   background: radial-gradient(
     circle at center,
-    rgba(246, 255, 0, 0.4),
+    rgba(225, 232, 19, 0.4),
     transparent 200%
   );
 }
@@ -154,7 +154,7 @@ body {
 .card:nth-child(1)::after {
   background: radial-gradient(
     circle at center,
-    rgba(187, 255, 0, 0.4),
+    rgba(171, 224, 24, 0.4),
     transparent 200%
   );
 }

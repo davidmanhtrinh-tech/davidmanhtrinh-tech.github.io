@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Cards</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="./card.css">
+</head>
+
+<body>
+  <div class="centered">
+
+    <div class="card border-left-behind">
+      <div class="shadow" style="--url: url('./eagle.png')"></div>
+      <div class="image background" style="--url: url('./fox.png')"></div>
+      <div class="image cutout" style="--url: url('./tiger.png')"></div>
+      <div class="content">
+        <h2>Hover me!</h2>
+        <p>3D layered card effect.</p>
+      </div>
+    </div>
+
+    <div class="card border-right-behind border-bottom-behind">
+      <div class="shadow" style="--url: url('./tiger.png')"></div>
+      <div class="image background" style="--url: url('./eagle.png')"></div>
+      <div class="image cutout" style="--url: url('./fox.png')"></div>
+      <div class="content">
+        <h2>Hover me!</h2>
+        <p>Another layered card.</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
