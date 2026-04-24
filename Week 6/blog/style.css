@@ -1,0 +1,84 @@
+/* https://colorhunt.co/palette/1a120b3c2a21d5cea3e5e5cb */
+
+body {
+  background-color: #1a120b;
+  display: flex;
+  text-align: center;
+  margin: auto;
+  max-width: 1000px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  /* color: #e5e5cb; */
+  color: #3c2a21;
+  font-size: 1.1rem;
+}
+
+#grid-container {
+  border: 1px dashed #e5e5cb4a;
+  margin: 10px;
+  /* width: 1200px; */
+  /* min-height: 500px; */
+  padding: 20px;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: scroll;
+}
+
+#box-1 {
+  background-color: limegreen;
+}
+#box-2 {
+  background-color: plum;
+}
+#box-3 {
+  background-color: aquamarine;
+}
+#box-4 {
+  background-color: coral;
+}
+#box-5 {
+  background-color: yellow;
+}
+#box-6 {
+  background-color: hotpink;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.6rem;
+  padding: 10px;
+  border-bottom: 1px solid #3c2a21;
+}
+
+p {
+  /* padding-bottom: 20px;
+  padding-top: 20px; */
+  padding: 10px;
+}
+
+#grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  gap: 20px;
+}
+
+.box {
+  min-height: 450px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.box h1 {
+  padding: 20px;
+  border-bottom: 1px solid black;
+}
+
+.box p {
+  padding: 20px;
+}
