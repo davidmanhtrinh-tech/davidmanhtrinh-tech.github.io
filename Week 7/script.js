@@ -24,3 +24,24 @@ function pauseAudio() {
   //airportAudio.pause();
   myVideo.pause();
 }
+
+// access the play pause button
+const playPauseButton = document.querySelector("#play-pause-button");
+console.log(playPauseButton);
+
+// access the image
+const playPauseImg = document.querySelector("#play-pause-img");
+console.log(playPauseImg);
+
+// add a click event listener to the button
+playPauseButton.addEventListener("click", toggleVideo);
+
+function toggleVideo() {
+  if (myVideo.paused === true || myVideo.ended === true) {
+    myVideo.play();
+    playPauseImg.src = "";
+  } else {
+    myVideo.pause();
+    playPauseImg.src = "";
+  }
+}
