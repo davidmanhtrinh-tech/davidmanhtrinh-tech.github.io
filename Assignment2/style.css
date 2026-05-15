@@ -1,7 +1,8 @@
 :root {
   --cream-text: #fdfad7;
 }
-/*This is the global reset*/
+
+/* This ig global reset */
 
 * {
   box-sizing: border-box;
@@ -31,6 +32,8 @@ body {
     slowZoom 30s ease-in-out infinite alternate;
 }
 
+/* Used when switching themes */
+
 body.fade-transition {
   opacity: 0.92;
 }
@@ -53,6 +56,7 @@ body::before {
 }
 
 /* I added a bit of grain, my goal was to mimic the look of vintage album cover textures*/
+
 body::after {
   content: "";
   position: fixed;
@@ -66,6 +70,7 @@ body::after {
 }
 
 /* This is an unecessary touch but I wanted to include a personalised touch with the cursor, I wanted it to be unique but still thematically appropriate to my overall aesthetic vision - I landed on this pixelated paper airplane. */
+
 button,
 a,
 .theme-image-btn,
@@ -87,16 +92,17 @@ a,
 
 .left-content {
   position: absolute;
-  top: 80px;
+  top: 70px;
   left: 55px;
   z-index: 2;
 
   backdrop-filter: blur(2px);
 }
 
-/*Clock text*/
+/* Clock text */
+
 .left-content h1 {
-  font-size: 92px;
+  font-size: 88px;
   font-weight: 300;
   line-height: 0.9;
   margin: 0 0 20px;
@@ -105,9 +111,10 @@ a,
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
-/*Location text*/
+/* Location text */
+
 .left-content h2 {
-  font-size: 34px;
+  font-size: 30px;
   font-weight: 300;
   margin: 0 0 45px;
   letter-spacing: 2px;
@@ -115,20 +122,22 @@ a,
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
-/*Quote text and styling*/
+/* Quote styling */
+
 #quote-text {
-  font-size: 22px;
+  font-size: 15px;
   line-height: 1.6;
   opacity: 0.95;
 
-  max-width: 650px;
+  max-width: 620px;
 
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 
   transition: opacity 0.8s ease;
 }
 
-/*Quote text fade-in-out animation*/
+/* Quote fade transition */
+
 #quote-text.fade-out {
   opacity: 0;
 }
@@ -142,7 +151,7 @@ a,
 
 .top-controls {
   position: absolute;
-  top: 55px;
+  top: 58px;
   right: 55px;
 
   display: flex;
@@ -157,22 +166,22 @@ a,
 .player-area {
   position: absolute;
   left: 50%;
-  top: 58%;
+  top: 61%;
   transform: translate(-50%, -50%);
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  width: 900px;
+  width: 700px;
   z-index: 2;
 
   animation: fadeUp 1.6s ease;
 }
 
 .cassette {
-  width: 860px;
-  max-width: 80vw;
+  width: 700px;
+  max-width: 65vw;
   opacity: 0.95;
 
   filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.35));
@@ -180,7 +189,7 @@ a,
   animation: floatCassette 5s ease-in-out infinite;
 }
 
-/*This is what makes the casette tape shake*/
+/* Cassette shake while audio is playing */
 
 .cassette.shake {
   filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.35))
@@ -188,17 +197,19 @@ a,
 
   animation:
     floatCassette 5s ease-in-out infinite,
-    cassetteShake 0.35s iFnfinite;
+    cassetteShake 0.35s infinite;
 }
 
 .player-buttons {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 80px;
+  gap: 95px;
 
-  margin-top: 25px;
+  margin-top: 18px;
 }
+
+/* Shared button styling */
 
 .player-buttons button,
 .img-btn {
@@ -215,29 +226,30 @@ a,
     filter 0.35s ease;
 }
 
+.player-buttons button {
+  flex-shrink: 0;
+}
+
+.player-buttons button img,
+.img-btn img {
+  width: 150px;
+}
+
+/* Hover interaction for player buttons */
+
 .player-buttons button:hover,
 .img-btn:hover {
   transform: scale(1.05);
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
 }
 
-.player-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-top: 25px;
-}
-
-.player-buttons button {
-  flex-shrink: 0;
-}
+/* Audio timer */
 
 #timer {
-  font-size: 30px;
+  font-size: 25px;
   opacity: 0.8;
 
-  margin: 0 40px;
+  margin: 0 35px;
 
   white-space: nowrap;
   text-align: center;
@@ -285,9 +297,11 @@ a,
 
 .theme-image-btn img {
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
 }
+
+/* This is the info page contents*/
 
 .info-btn {
   margin-left: 35px;
@@ -314,7 +328,7 @@ a,
 
 .info-btn img {
   display: block;
-  width: 160px;
+  width: 135px;
   height: auto;
 }
 
@@ -390,6 +404,8 @@ a,
   }
 }
 
+/* Gentle background zoom */
+
 @keyframes slowZoom {
   from {
     background-size: 100%;
@@ -399,6 +415,8 @@ a,
     background-size: 108%;
   }
 }
+
+/* Cassette entrance appear in animation */
 
 @keyframes fadeUp {
   from {
@@ -412,7 +430,149 @@ a,
   }
 }
 
-/* RESPONSIVE DESIGN */
+/* this is the info page styling. Note: The two cloud backgrounds from the main page and info page are different. All images were sourced from Unsplashed. */
+
+.info-body {
+  min-height: 100vh;
+  overflow: hidden;
+
+  background-image: url("cloudbg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #fdfad7;
+  cursor: url("cursor.png"), auto;
+
+  position: relative;
+}
+
+/* Info page grain overlay added for greater depth */
+
+.info-body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: url("Noise.png");
+  background-size: cover;
+  background-repeat: repeat;
+
+  opacity: 0.08;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Back button */
+
+.back-button {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+
+  z-index: 5;
+
+  width: 130px;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.back-button:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.35));
+}
+
+.back-button img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Orb rotation animation*/
+
+.erokia-orb {
+  position: fixed;
+  top: 35px;
+  right: 55px;
+
+  width: 88px;
+  height: 88px;
+
+  border-radius: 50%;
+  object-fit: cover;
+
+  z-index: 4;
+
+  filter: drop-shadow(0 0 8px rgba(255, 226, 105, 0.75))
+    drop-shadow(0 10px 14px rgba(0, 0, 0, 0.35));
+
+  animation: orbRotate 18s linear infinite;
+}
+
+.info-page-content {
+  position: relative;
+  z-index: 3;
+
+  width: 520px;
+  max-width: 90vw;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-top: 185px;
+
+  text-align: left;
+}
+
+.info-page-content h1 {
+  font-size: 95px;
+  font-weight: 300;
+  line-height: 1;
+
+  margin-bottom: 35px;
+
+  letter-spacing: 4px;
+  color: #fdfad7;
+
+  text-align: center;
+}
+
+.info-page-content h2 {
+  font-size: 28px;
+  font-weight: 300;
+
+  margin-bottom: 35px;
+
+  color: #fdfad7;
+
+  text-align: center;
+}
+
+.info-page-content p {
+  font-size: 18px;
+  line-height: 1.45;
+
+  margin-bottom: 34px;
+
+  color: #fdfad7;
+
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Orb rotation animation */
+
+@keyframes orbRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 @media (max-width: 900px) {
   .left-content {
@@ -430,7 +590,7 @@ a,
   }
 
   #quote-text {
-    font-size: 16px;
+    font-size: 14px;
     max-width: 90%;
   }
 
@@ -464,7 +624,8 @@ a,
   }
 
   .player-buttons {
-    gap: 120px;
+    gap: 70px;
+    margin-top: 15px;
   }
 
   .player-buttons button img,
@@ -474,143 +635,36 @@ a,
 
   #timer {
     font-size: 22px;
-  }
-}
-
-/* this is the info page styling. Note: The two cloud backgrounds from the main page and info page are different. All images were sourced from Unsplashed. */
-
-.info-body {
-  min-height: 100vh;
-  overflow: hidden;
-
-  background-image: url("cloudbg.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  color: #fdfad7;
-  cursor: url("cursor.png"), auto;
-
-  position: relative;
-}
-
-.info-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-
-  background-image: url("Noise.png");
-  background-size: cover;
-  background-repeat: repeat;
-
-  opacity: 0.08;
-
-  pointer-events: none;
-  z-index: 1;
-}
-
-.back-button {
-  position: fixed;
-  top: 40px;
-  left: 40px;
-
-  z-index: 5;
-
-  width: 140px;
-
-  transition:
-    transform 0.3s ease,
-    filter 0.3s ease;
-}
-
-.back-button:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.35));
-}
-
-.back-button img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.erokia-orb {
-  position: fixed;
-  top: 35px;
-  right: 55px;
-
-  width: 95px;
-  height: 95px;
-
-  border-radius: 50%;
-  object-fit: cover;
-
-  z-index: 4;
-
-  filter: drop-shadow(0 0 8px rgba(255, 226, 105, 0.75))
-    drop-shadow(0 10px 14px rgba(0, 0, 0, 0.35));
-
-  animation: orbRotate 18s linear infinite;
-}
-
-.info-page-content {
-  position: relative;
-  z-index: 3;
-
-  width: 520px;
-  max-width: 90vw;
-
-  margin-left: auto;
-  margin-right: auto;
-
-  padding-top: 210px;
-
-  text-align: left;
-}
-
-.info-page-content h1 {
-  font-size: 110px;
-  font-weight: 300;
-  line-height: 1;
-
-  margin-bottom: 45px;
-
-  letter-spacing: 4px;
-  color: #fdfad7;
-
-  text-align: center;
-}
-
-.info-page-content h2 {
-  font-size: 32px;
-  font-weight: 300;
-
-  margin-bottom: 42px;
-
-  color: #fdfad7;
-
-  text-align: center;
-}
-
-.info-page-content p {
-  font-size: 21px;
-  line-height: 1.45;
-
-  margin-bottom: 36px;
-
-  color: #fdfad7;
-
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Orb rotation animation*/
-
-@keyframes orbRotate {
-  from {
-    transform: rotate(0deg);
+    margin: 0 20px;
   }
 
-  to {
-    transform: rotate(360deg);
+  .back-button {
+    top: 25px;
+    left: 25px;
+    width: 110px;
+  }
+
+  .erokia-orb {
+    top: 25px;
+    right: 25px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .info-page-content {
+    width: 85vw;
+    padding-top: 150px;
+  }
+
+  .info-page-content h1 {
+    font-size: 70px;
+  }
+
+  .info-page-content h2 {
+    font-size: 22px;
+  }
+
+  .info-page-content p {
+    font-size: 16px;
   }
 }
