@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Ambient Wave Player</title>
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="script.js" defer></script>
+  </head>
+
+  <body class="cloud-theme">
+    <!-- This here is where my background overlay will occur - it will fade in and out -->
+    <div id="background-fade"></div>
+
+    <main class="page">
+      <!-- This is where the timer and location will be placed, alongside my vision of the quotes (top left). I want to have the timer be actively ticking in AEST-->
+      <section class="left-content">
+        <h1 id="real-time">1:52am</h1>
+
+        <h2>Melbourne, Victoria</h2>
+
+        <p id="quote-text">
+          <span class="quote-dot">●</span>
+          “The best of life exists beyond the thing we are encouraged to crave.”
+        </p>
+      </section>
+
+      <!-- These are the top right controls where the information button and coloured boxes are located. My vision is to have the coloured boxes be the indicator for the user to click on it and have it transition to a background suited to that colour - representing a different time of day or time period. -->
+      <section class="top-controls">
+        <!-- This will be link to the cosy morning time theme (the default) -->
+        <button class="theme-image-btn" data-theme="cloud-theme">
+          <img src="whitebox.png" alt="Cloud theme button" />
+        </button>
+
+        <!-- I customised the coloured boxed icons on Figma to give it a more personalised look for the aesthetic of my main page. -->
+        <!--This will be linked to my comfort afternoon theme-->
+        <button class="theme-image-btn" data-theme="orange-theme">
+          <img src="orangebox.png" alt="Orange theme button" />
+        </button>
+
+        <!-- This will be linked to my gloomy/sorrowful evening theme  -->
+        <button class="theme-image-btn" data-theme="blue-theme">
+          <img src="bluebox.png" alt="Blue theme button" />
+        </button>
+
+        <!-- And this one will be linked to my early morning/dream-like state theme -->
+        <button class="theme-image-btn" data-theme="purple-theme">
+          <img src="greenbox.png" alt="Green theme button" />
+        </button>
+
+        <!-- This is my information button, I plan on having it linked to a secondary page revealing a little more about the track, its melodic mood, and how it ties into my reflects my design choice -->
+        <a href="info.html" class="info-btn">
+          <img src="Info button.png" alt="Info button" />
+        </a>
+      </section>
+
+      <!-- This is the casete tape asset, this asset serves as the bridge between comfort and nostalgia - the elements that compliment the calm and relaxing nature of the track. The goal is to have it react or interact with the track once played and paused. -->
+      <section class="player-area">
+        <img
+          src="CasetteTape.png"
+          alt="Cassette tape"
+          class="cassette"
+          id="cassette-img"
+        />
+
+        <audio id="custom-audio-player">
+          <source src="ambientwave.mp3" type="audio/mpeg" />
+        </audio>
+
+        <div class="player-buttons">
+          <!-- This is my play button -->
+          <button class="img-btn" onclick="playAudio()">
+            <img src="Play button.png" alt="Play button" />
+          </button>
+
+          <!-- This is the track timer, set to default 00:00 and then play back to the original state once finished playing entirely -->
+          <p id="timer">00:00 / 00:00</p>
+
+          <!-- This is my pause button -->
+          <button class="img-btn" onclick="pauseAudio()">
+            <img src="Pause Button.png" alt="Pause button" />
+          </button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+> >

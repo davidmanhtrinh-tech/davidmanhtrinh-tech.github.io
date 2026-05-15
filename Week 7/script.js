@@ -1,6 +1,6 @@
 // first to get access to the audio element
-const airportAudio = document.querySelector("#airport-audio");
-console.log(airportAudio);
+const airportAudio = document.querySelector("#my-video");
+console.log(myVideo);
 
 // let us access the video too
 const myVideo = document.querySelector("#my-video");

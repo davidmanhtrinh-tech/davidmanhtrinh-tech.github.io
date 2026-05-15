@@ -1,0 +1,616 @@
+:root {
+  --cream-text: #fdfad7;
+}
+/*This is the global reset*/
+
+* {
+  box-sizing: border-box;
+}
+
+/*This is the main body stying variables for the cursor, background image, font, and animations*/
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+
+  background-image: url("Cloudy.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
+  color: var(--cream-text);
+
+  cursor: url("cursor.png"), auto;
+
+  transition: opacity 1s ease-in-out;
+
+  animation:
+    backgroundFloat 18s ease-in-out infinite alternate,
+    slowZoom 30s ease-in-out infinite alternate;
+}
+
+body.fade-transition {
+  opacity: 0.92;
+}
+
+/*I added a dark vignette overlay to my page to offer it greater visual depth and highlight a bit more of the control panels */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background: radial-gradient(
+    circle,
+    transparent 45%,
+    rgba(0, 0, 0, 0.32) 100%
+  );
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* I added a bit of grain, my goal was to mimic the look of vintage album cover textures*/
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: url("grain.png");
+  opacity: 0.08;
+
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* This is an unecessary touch but I wanted to include a personalised touch with the cursor, I wanted it to be unique but still thematically appropriate to my overall aesthetic vision - I landed on this pixelated paper airplane. */
+button,
+a,
+.theme-image-btn,
+.info-btn,
+.player-buttons button {
+  cursor: url("cursor-hover.png"), pointer;
+}
+
+/*Ths is the main page container*/
+
+.page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+}
+
+/* This is the left text area container, it includes the clock timer, location, and quotes section */
+
+.left-content {
+  position: absolute;
+  top: 80px;
+  left: 55px;
+  z-index: 2;
+
+  backdrop-filter: blur(2px);
+}
+
+/*Clock text*/
+.left-content h1 {
+  font-size: 92px;
+  font-weight: 300;
+  line-height: 0.9;
+  margin: 0 0 20px;
+  letter-spacing: 1px;
+
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/*Location text*/
+.left-content h2 {
+  font-size: 34px;
+  font-weight: 300;
+  margin: 0 0 45px;
+  letter-spacing: 2px;
+
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+/*Quote text and styling*/
+#quote-text {
+  font-size: 22px;
+  line-height: 1.6;
+  opacity: 0.95;
+
+  max-width: 650px;
+
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+
+  transition: opacity 0.8s ease;
+}
+
+/*Quote text fade-in-out animation*/
+#quote-text.fade-out {
+  opacity: 0;
+}
+
+.quote-dot {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+/* These are where the top right controls reside, it includes the coloured box themed buttons + info button */
+
+.top-controls {
+  position: absolute;
+  top: 55px;
+  right: 55px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  z-index: 3;
+}
+
+/* This is the casette player - centered, faded up, bouncing and infinite  shaking */
+
+.player-area {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 900px;
+  z-index: 2;
+
+  animation: fadeUp 1.6s ease;
+}
+
+.cassette {
+  width: 860px;
+  max-width: 80vw;
+  opacity: 0.95;
+
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.35));
+
+  animation: floatCassette 5s ease-in-out infinite;
+}
+
+/*This is what makes the casette tape shake*/
+
+.cassette.shake {
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.35))
+    drop-shadow(0 0 18px rgba(255, 255, 255, 0.12));
+
+  animation:
+    floatCassette 5s ease-in-out infinite,
+    cassetteShake 0.35s iFnfinite;
+}
+
+.player-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+
+  margin-top: 25px;
+}
+
+.player-buttons button,
+.img-btn {
+  background: none;
+  border: none;
+  outline: none;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
+}
+
+.player-buttons button:hover,
+.img-btn:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}
+
+.player-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 25px;
+}
+
+.player-buttons button {
+  flex-shrink: 0;
+}
+
+#timer {
+  font-size: 30px;
+  opacity: 0.8;
+
+  margin: 0 40px;
+
+  white-space: nowrap;
+  text-align: center;
+
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* These are the layout for the thematic backgrounds */
+
+.cloud-theme {
+  background-image: url("Cloudy.png");
+}
+
+.orange-theme {
+  background-image: url("rebirth.png");
+}
+
+.blue-theme {
+  background-image: url("nighttime.png");
+}
+
+.purple-theme {
+  background-image: url("nostalgia.png");
+}
+
+/* These are the customised theme buttons, upon hovering over it it shall shrink and reveal and underglow to indicate the reaction.  */
+
+.theme-image-btn {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
+}
+
+.theme-image-btn:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.theme-image-btn img {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+.info-btn {
+  margin-left: 35px;
+
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+
+  box-shadow: none;
+  backdrop-filter: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
+}
+
+.info-btn:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}
+
+.info-btn img {
+  display: block;
+  width: 160px;
+  height: auto;
+}
+
+/* The background fade overlay */
+
+#background-fade {
+  position: fixed;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+#background-fade.show {
+  opacity: 1;
+}
+
+/* This is the command for the casette shaking*/
+
+@keyframes cassetteShake {
+  0% {
+    translate: 0px 0px;
+  }
+
+  25% {
+    translate: -2px 0px;
+  }
+
+  50% {
+    translate: 2px 0px;
+  }
+
+  75% {
+    translate: -1px 0px;
+  }
+
+  100% {
+    translate: 0px 0px;
+  }
+}
+
+/* This is the command for the casette floating*/
+
+@keyframes floatCassette {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/*My favourite touch  - the slow background movement. I didn't want the background to be stagnant, a slow motion would help enhance the expereince of relaxing with the slow hovering casette tape*/
+@keyframes backgroundFloat {
+  0% {
+    background-position: center top;
+  }
+
+  100% {
+    background-position: center bottom;
+  }
+}
+
+@keyframes slowZoom {
+  from {
+    background-size: 100%;
+  }
+
+  to {
+    background-size: 108%;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+  .left-content {
+    top: 40px;
+    left: 30px;
+  }
+
+  .left-content h1 {
+    font-size: 58px;
+  }
+
+  .left-content h2 {
+    font-size: 22px;
+    margin-bottom: 28px;
+  }
+
+  #quote-text {
+    font-size: 16px;
+    max-width: 90%;
+  }
+
+  .top-controls {
+    top: 25px;
+    right: 25px;
+    gap: 8px;
+  }
+
+  .theme-image-btn img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .info-btn {
+    margin-left: 15px;
+  }
+
+  .info-btn img {
+    width: 110px;
+  }
+
+  .player-area {
+    width: 100%;
+    top: 62%;
+  }
+
+  .cassette {
+    width: 95vw;
+    max-width: 95vw;
+  }
+
+  .player-buttons {
+    gap: 120px;
+  }
+
+  .player-buttons button img,
+  .img-btn img {
+    width: 110px;
+  }
+
+  #timer {
+    font-size: 22px;
+  }
+}
+
+/* this is the info page styling. Note: The two cloud backgrounds from the main page and info page are different. All images were sourced from Unsplashed. */
+
+.info-body {
+  min-height: 100vh;
+  overflow: hidden;
+
+  background-image: url("cloudbg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #fdfad7;
+  cursor: url("cursor.png"), auto;
+
+  position: relative;
+}
+
+.info-body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: url("Noise.png");
+  background-size: cover;
+  background-repeat: repeat;
+
+  opacity: 0.08;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.back-button {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+
+  z-index: 5;
+
+  width: 140px;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.back-button:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.35));
+}
+
+.back-button img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.erokia-orb {
+  position: fixed;
+  top: 35px;
+  right: 55px;
+
+  width: 95px;
+  height: 95px;
+
+  border-radius: 50%;
+  object-fit: cover;
+
+  z-index: 4;
+
+  filter: drop-shadow(0 0 8px rgba(255, 226, 105, 0.75))
+    drop-shadow(0 10px 14px rgba(0, 0, 0, 0.35));
+
+  animation: orbRotate 18s linear infinite;
+}
+
+.info-page-content {
+  position: relative;
+  z-index: 3;
+
+  width: 520px;
+  max-width: 90vw;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-top: 210px;
+
+  text-align: left;
+}
+
+.info-page-content h1 {
+  font-size: 110px;
+  font-weight: 300;
+  line-height: 1;
+
+  margin-bottom: 45px;
+
+  letter-spacing: 4px;
+  color: #fdfad7;
+
+  text-align: center;
+}
+
+.info-page-content h2 {
+  font-size: 32px;
+  font-weight: 300;
+
+  margin-bottom: 42px;
+
+  color: #fdfad7;
+
+  text-align: center;
+}
+
+.info-page-content p {
+  font-size: 21px;
+  line-height: 1.45;
+
+  margin-bottom: 36px;
+
+  color: #fdfad7;
+
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Orb rotation animation*/
+
+@keyframes orbRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
