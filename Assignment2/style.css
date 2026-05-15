@@ -525,6 +525,11 @@ a,
   padding-top: 185px;
 
   text-align: left;
+
+  opacity: 0;
+
+  animation: infoFadeUp 1.6s ease forwards;
+  animation-delay: 0.2s;
 }
 
 .info-page-content h1 {
@@ -571,6 +576,20 @@ a,
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Info page load in text animation */
+
+@keyframes infoFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }
 
