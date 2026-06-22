@@ -1,0 +1,271 @@
+*
+/* this is the global reset that removes the default browser spacing and makes the layout just easier to control*/ {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* The dark background continues the Project:VEIL identity from the main page. On the other hand, the vibrant/light text creates a great contrast to this which helps improve readability.*/
+body {
+  background: #0b1620;
+  color: #f4efe6;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* I created a background grid effect, it has a subtle orange grid that gives the page a futuristic database/interface feel. It suggests the character is being viewed within the box (A suggestion that my lecturer had raised during my presentation)*/
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 157, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(255, 157, 0, 0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* Pretty simple here, the back button is positioned in the fixed corner on the top left to allow users to easily return to the character selection page.*/
+.back-button {
+  position: fixed;
+  top: 35px;
+  left: 40px;
+  color: #ff9d00;
+  text-decoration: none;
+  font-weight: 900;
+  letter-spacing: 2px;
+  z-index: 20;
+}
+
+/* The agent/hero page splits the screen design - you have the character information on the left and character illustration on the right. I wanted to keep it convetional and easy on the eyes but maintain that game-ified look*/
+
+.agent-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 45% 55%;
+  align-items: center;
+  padding: 80px 110px;
+  position: relative;
+}
+
+/* This is the hero information panel that displays the character name, description, and role.*/
+.agent-info {
+  z-index: 5;
+}
+
+/* This the characters number*/
+.agent-number {
+  color: #ff9d00;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+
+/* This the characters title/file - I wanted that tactical dossier theme to be consistent here as well*/
+.agent-label {
+  color: rgba(244, 239, 230, 0.65);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  margin-bottom: 14px;
+}
+
+/* The character names are scaled large to make the charactr's identity the main focus.*/
+.agent-info h1 {
+  color: #f4efe6;
+  font-size: 7rem;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 4px;
+  line-height: 0.9;
+  margin-bottom: 25px;
+}
+
+.title-line {
+  width: 190px;
+  height: 5px;
+  background: #ff9d00;
+  margin-bottom: 35px;
+}
+
+/* The character descriptions give narrative context and eplains their role within the projects lore world.*/
+.agent-description {
+  max-width: 580px;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: rgba(244, 239, 230, 0.85);
+  margin-bottom: 50px;
+}
+
+/* The role card showcases the characters' class/archetype like a game or UI card. The orange border is intended to make the it feel connected to the overall interface.*/
+.role-card {
+  width: 160px;
+  height: 150px;
+  border: 1px solid #ff9d00;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 157, 0, 0.05);
+}
+
+.role-card p {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  color: rgba(244, 239, 230, 0.8);
+}
+
+.role-card h3 {
+  color: #ff9d00;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* The character image area makes the right side is reserved for the full characters artwork. Since I illustrated these characters (via Procreate), I wanted the users to be able to take in each characters' artwork- hence why I made the character the visual centrepiece  */
+.agent-image {
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  z-index: 4;
+}
+
+/*The character glow was something that I had wanted replaced with the character movement mp4, but struggled to integrate that. I hence, chose to create a glowing hover state that illuminates an orange vibrance.*/
+.agent-image::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: rgba(255, 157, 0, 0.12);
+  filter: blur(80px);
+  z-index: -1;
+}
+
+.agent-image img {
+  max-height: 88vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/*The character animation is pretty simple, the character fades and slides in when the page loads and then gently floats. This is a similar function to my previous tape player assignment.*/
+.agent-image img {
+  max-height: 88vh;
+  max-width: 100%;
+  object-fit: contain;
+
+  animation:
+    characterIntro 0.9s ease forwards,
+    characterFloat 4s ease-in-out infinite;
+
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease;
+}
+
+/*The glow animation make the background glow slowly pulse to create a subtle yet noticeable atmosphere.*/
+.agent-image img:hover {
+  transform: scale(1.04) translateY(-8px);
+  filter: drop-shadow(0 0 25px rgba(255, 157, 0, 0.45));
+}
+
+.agent-image::before {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/*The character intro keyframes creates this cinematic-esk entrance when the first page loads.*/
+@keyframes characterIntro {
+  0% {
+    opacity: 0;
+    transform: translateX(80px) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/*The floating keyframes adds subtle vertical movement, this was added so that the character feels more dynamic.*/
+@keyframes characterFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -14px;
+  }
+}
+
+/*The glowing pulse keyframes make the orange glow expand and contract slowly into the background.*/
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+/*The right side bars, similarly to character selection page repeats that same motif that keeps all the pages visually connected.*/
+.right-bars {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  z-index: 30;
+}
+
+.thin-bar {
+  width: 22px;
+  height: 100%;
+  background: #0b1620;
+  border-left: 14px solid #ff9d00;
+}
+
+.thick-bar {
+  width: 72px;
+  height: 100%;
+  background: #ff9d00;
+}
+
+.aurelia-pose {
+  position: relative;
+  top: -220px;
+  transform: scale(1.55);
+  transform-origin: center center;
+}
+
+/* Crow */
+.crow-pose {
+  transform: translateX(-120px);
+}
+
+.hero {
+  position: relative;
+  z-index: 20;
+  margin-left: 170px;
+  padding-top: 75px;
+}
+
+.hero h1 {
+  color: #ff9d00;
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  color: #ff9d00;
+  font-size: 1.5rem;
+  margin-top: 4px;
+}
