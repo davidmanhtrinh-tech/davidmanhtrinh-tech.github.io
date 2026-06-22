@@ -1,0 +1,328 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* This is the main body - the dark blue background creates is intended to create a secretive and futuristic mood for Project: VEIL */
+body {
+  min-height: 100vh;
+  background: #0b1620;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* This is the general page wrap, it's used to keep the page contents centered and helpes with it from becoming too wide */
+.page-wrap {
+  width: 80%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 120px 0 80px;
+}
+
+/* This is the page title styler, it has large bold text to give the page a strong game menu-like identity.*/
+.page-title {
+  margin-bottom: 60px;
+  color: #f4efe6;
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+/* This is the hero section where it introduces the Project: VEIL title. It's pushed slightly to the left to balance the orange bars on the right side of the page.*/
+.hero {
+  position: relative;
+  z-index: 10;
+  margin-left: 170px;
+  padding-top: 80px;
+}
+
+.hero h1 {
+  color: #ff9d00;
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  color: #ff9d00;
+  font-size: 1.5rem;
+  margin-top: 4px;
+}
+
+/* This is the background character images - Ishiru is placed in the background at low opacity to add atmosphere and balances out the components that occupy the right side of the webpage.*/
+.background-ishiru {
+  position: fixed;
+  left: -280px;
+  bottom: -250px;
+  width: 1350px;
+  height: auto;
+  opacity: 0.15;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* The right orange bars was initially disregarded prior to the final production for the webpage - it's inspired by Bleach's stylistic approach. I eventually decided to implement it as I felt that it reinforced that futuristic game interface.*/
+.right-bars {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  gap: 18px;
+  z-index: 20;
+}
+
+.right-bars div {
+  height: 100%;
+  background: #ff9d00;
+}
+
+.bar-one {
+  width: 16px;
+}
+
+.bar-two {
+  width: 32px;
+}
+
+.bar-three {
+  width: 72px;
+}
+
+/* The character grid was the something I had to do some research on, I did a few site inspections to get a feel for how different sites create that character grid layout. I took that general knowledge and simplified it with a three-column layout, creating that character selection screen feel, similar to a game roster or agent selection menu.*/
+.character-grid {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(3, 380px);
+  justify-content: center;
+  gap: 30px;
+  margin-top: 75px;
+  margin-left: 360px;
+}
+
+/* The character card acts like an interactive profile button. The hover lift makes the cards feel responsive and selectable, similarly to Marvel Rivals.*/
+
+.character-card {
+  position: relative;
+  width: 380px;
+  height: 240px;
+  overflow: hidden;
+  background: #000;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-4px);
+}
+
+/* This is the chaacter image and video section where the static image shows first in its default state, and then when hovered the video appears to create an animated reveal. This is heavily inspired by Marvel Rivals character menu - The illustrated 18 total designs, 2 for each character. Every individual character has a default front-facing view and a more dynamic and larger scaled pose.*/
+.character-image,
+.character-video {
+  position: absolute;
+  object-fit: contain;
+}
+
+.character-image {
+  bottom: 0;
+  left: 50%;
+  width: 75%;
+  height: auto;
+  z-index: 1;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease;
+}
+
+/* The hover video is suppose to sit over the static image but is actually starts invisible, this is to give the the illusion that it isn't there initially.*/
+.character-video {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* The character card hover hides the image still when hovering over the card - I saw a reddit thread on how to achieve this sort of transition.*/
+
+.character-card:hover .character-image {
+  opacity: 0;
+}
+
+/* And this is where the video is revealed when hovering over the card in its hovered state.*/
+
+.character-card:hover .character-video {
+  opacity: 1;
+}
+
+/* This is the name bar strip - the vertical orange strip that helps identify each character immediately. It's intended to follow this aestheic anime/game dossier style that I was aiming for as I has suggested in my presentation in relation to my first reference 'Bleach'.*/
+
+.name-strip {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 6;
+  width: 42px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff9d00;
+  transition: opacity 0.25s ease;
+}
+
+.name-strip span {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  color: #fff;
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+/* This is where the name bar strip fades away upon the hovering state, so the video and stats now come into effect.*/
+.character-card:hover .name-strip {
+  opacity: 0;
+}
+
+/* The dark overlay appears on hover to make the character information easier to read - this is something I had noticed Bleach had in their site which I wanted to integrate into my design.*/
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.75);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.character-card:hover .overlay {
+  opacity: 1;
+}
+
+/* The bar scanning effect was so hard to achieve, I gathered some friends for insights and even asked AI for some assistance. This orange bar scanning line effect supports the database theme, making it feel like the character is scanned - it also serves as the transitional queue for the defeault state to transition to the hovered state*/
+.character-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  z-index: 4;
+  width: 80px;
+  height: 100%;
+  background: rgba(255, 157, 0, 0.8);
+  transform: skewX(-20deg);
+}
+
+.character-card:hover::before {
+  animation: scanner 0.6s ease forwards;
+}
+/* Moves the scanner line across the card from left to right .*/
+@keyframes scanner {
+  from {
+    left: -120%;
+  }
+
+  to {
+    left: 120%;
+  }
+}
+
+/*The character info, it displays the hidden name and stats until it's in the hover state. This keeps the default card design clean and uncluttered.*/
+
+.character-info {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* This animation slides the information upward when the user interacts with the card */
+.character-card:hover .character-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.character-info h2 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+/* The stats page reveal an RPG-styled labels that show each character's strengths, supporting the idea that this is a game-like character database.*/
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.stats span {
+  padding: 4px 6px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 157, 0, 0.7);
+  background: rgba(255, 157, 0, 0.15);
+}
+
+/* The individual character positioning is used to manually adjust the characters position because I had made an error with the designs of the character in Figma and am on a tight time crunch and so I had compensate for the size and scaling here*/
+
+.crow-pose {
+  position: relative;
+  top: -450px;
+  left: -300px;
+  transform: translateY(-300px);
+}
+
+/* The responsive design reduces the grid from three columns to two columns on smaller screens.*/
+
+@media (max-width: 1300px) {
+  .character-grid {
+    grid-template-columns: repeat(2, 380px);
+    margin-left: 0;
+  }
+}
+/* I've also designed it for smaller screens on the mobile as well, the layout becomes one column so each card remains readable. I wanted this project to not be a one and done academic project, I wish to build upon it further down the line.*/
+
+@media (max-width: 850px) {
+  .hero {
+    margin-left: 40px;
+  }
+
+  .character-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin-left: 0;
+  }
+
+  .character-card {
+    width: 90%;
+    max-width: 380px;
+  }
+
+  .background-ishiru {
+    opacity: 0.12;
+  }
+}
+
+/*The final name strip font style - I decided to go with Bebas Neue to give the vertical names a sharper poster-like look, similarly to the on the Bleach's character cards - I felt that it was very fitting to the Project:Veil's identity.*/
+.name-strip span {
+  font-family: "Bebas Neue", sans-serif;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  color: white;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
